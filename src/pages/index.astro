@@ -1,11 +1,1247 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const galleryImages = [
+	{
+		src: '/images/gallery-1.jpg',
+		alt: 'A group enjoying a calm freediving session together.',
+	},
+	{
+		src: '/images/gallery-2.png',
+		alt: 'Ocean-inspired artwork with a poetic freediving message.',
+	},
+	{
+		src: '/images/gallery-3.jpg',
+		alt: 'Two freedivers sharing a relaxed moment by the water.',
+	},
+];
+
+const researchBannerImage = {
+	src: '/images/D878_C024_1019KH.0000332.JPG',
+	alt: 'Shark image used to introduce the Lord Howe Island shark research program section.',
+};
+
+const researchStories = [
+	{
+		title: '"occur in high abundance"',
+		image: '/images/D877_C016_1019B9.0002196.JPG',
+		alt: 'Shark image supporting the program focus summary.',
+		body: [
+			'"important indicator species for marine park management."',
+			'"testing deterrents to reduce shark bycatch and depredation" and "continuation of the deepwater acoustic receiver array."',
+		],
+	},
+	{
+		title: '"generated important baseline knowledge"',
+		image: '/images/D877_C023_10191H.0000850.JPG',
+		alt: 'Shark image supporting the research methods and monitoring summary.',
+		body: [
+			'"commenced in 2018" and "generated important baseline knowledge on their movement patterns, residency, depth range and overlap with fishing vessel activity."',
+			'"assess movement patterns, fisher-shark interactions, population size, connectivity" using "acoustic tracking" and "vessel monitoring system data."',
+		],
+	},
+	{
+		title: '"mostly remained resident"',
+		image: '/images/nunu-1731.jpg',
+		alt: 'Field image supporting the published findings summary.',
+		body: [
+			'"up to 12 km per day," "spring and summer" and "30-100 m."',
+			'"long term monitoring of the population is valuable" and "maintaining the array will provide vital ongoing benefits."',
+		],
+	},
+];
+
+const pillars = [
+	'Certified freediving instruction',
+	'Holistic approach to wellbeing',
+	'Safe, supportive environment',
+];
+
+const contactLinks = {
+	email: 'mailto:anikacraney@gmail.com',
+	instagramPersonal: 'https://instagram.com/nunufis',
+	instagramBrand: 'https://instagram.com/lumarafreedive',
+};
+
+const whalesOffer = {
+	formName: 'tonga-whales-eoi',
+	discountCode: 'ANIKA',
+	resortUrl: 'https://example-resort-site.com/',
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="Anika Craney"
+	description="Freediving experiences shaped by ocean connection, breathwork, and mindful confidence."
+>
+	<div class="page-shell">
+		<header class="site-header">
+			<a class="brand" href="#top">Anika Craney</a>
+			<nav class="site-nav" aria-label="Primary">
+				<a href="#about">About</a>
+				<a href="#research">Research</a>
+				<a href="#gallery">Gallery</a>
+				<a href="#tonga-whales">Tonga</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</header>
+
+		<main id="top">
+			<section class="hero">
+				<div class="hero-copy">
+					<p class="eyebrow">Anika Craney</p>
+					<h1>MAKE FRIENDS WITH YOUR FEARS</h1>
+					<p class="lede">
+						Freediving experiences rooted in stillness, confidence, and a deeper connection
+						with the ocean.
+					</p>
+					<div class="hero-actions">
+						<a class="button button-primary icon-button" href={contactLinks.email}>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm2.22-.25L12 11.44l6.78-4.94H5.22Zm14.28 1.86-6.91 5.03a1 1 0 0 1-1.18 0L4.5 8.36v8.89c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25V8.36Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Email</span>
+						</a>
+						<a
+							class="button button-secondary icon-button"
+							href={contactLinks.instagramPersonal}
+							target="_blank"
+							rel="noreferrer"
+						>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>@nunufis</span>
+						</a>
+						<a class="button button-glass" href="#tonga-whales">Whales in Tonga</a>
+					</div>
+				</div>
+				<div class="hero-note">
+					<p>Freediving experiences with Anika Craney.</p>
+				</div>
+			</section>
+
+			<section class="pillars" aria-label="Brand values">
+				{pillars.map((pillar) => (
+					<div class="pillar">
+						<span class="pillar-mark"></span>
+						<p>{pillar}</p>
+					</div>
+				))}
+			</section>
+
+			<section class="gallery-section" id="gallery">
+				<div class="section-heading">
+					<p class="eyebrow">Ocean moments</p>
+					<h2>A visual journal with Anika</h2>
+				</div>
+				<div class="gallery-grid">
+					{galleryImages.map((image) => (
+						<figure class="gallery-card">
+							<img src={image.src} alt={image.alt} loading="lazy" />
+						</figure>
+					))}
+				</div>
+			</section>
+
+			<section class="about-section" id="about">
+				<div class="about-image-wrap">
+					<img
+						class="about-image"
+						src="/images/about.jpg"
+						alt="Anika Craney at the shoreline with the sea behind her."
+						loading="lazy"
+					/>
+				</div>
+				<div class="about-copy">
+					<p class="eyebrow">Founder story</p>
+					<h2>Anika Craney</h2>
+					<p>
+						Hi, I’m Anika Craney. I created this offering to share my passion for freediving,
+						the ocean, and the life-changing power of reconnecting with nature.
+					</p>
+					<p>
+						My journey into freediving began as a personal search for stillness and strength.
+						I discovered that holding my breath beneath the surface was more than a skill; it
+						was a way to quiet the mind, release stress, and feel deeply present. Over time,
+						the ocean became my classroom, my playground, and my greatest teacher.
+					</p>
+					<p>
+						Through my work, I combine <strong>certified freediving instruction</strong> with
+						a <strong>holistic approach to wellbeing</strong>. Whether you’re here to learn new
+						diving skills, overcome fear, or simply experience the beauty of the ocean, my
+						goal is to create a <strong>safe, supportive environment</strong> where you can
+						grow at your own pace.
+					</p>
+					<p>
+						I also contribute as a <strong>citizen science research assistant</strong> on the
+						Lord Howe Island shark research program, and I’m currently taking expressions of
+						interest for <strong>Tonga whale swims from July to October 2026</strong>.
+					</p>
+					<p>
+						I believe freediving isn’t just about depth. It’s about confidence, self-trust,
+						and connection. That’s why my programs blend breathwork, ocean safety, and skill
+						development with elements of nature connection and mindfulness.
+					</p>
+				</div>
+			</section>
+
+			<section class="research-section" id="research">
+				<div class="section-heading research-heading">
+					<p class="eyebrow">Official program overview</p>
+					<h2>Lord Howe Island shark research program</h2>
+					<p>Official excerpts from the published program material.</p>
+				</div>
+				<div class="research-intro">
+					<p>
+						Anika contributes to this program as a <strong>citizen science research assistant</strong>.
+					</p>
+				</div>
+				<figure class="research-banner">
+					<img
+						src={researchBannerImage.src}
+						alt={researchBannerImage.alt}
+						loading="lazy"
+					/>
+				</figure>
+				<div class="research-stories">
+					{researchStories.map((story, index) => (
+						<article class={`research-story ${index % 2 === 1 ? 'reverse' : ''}`}>
+							<div class="research-story-image">
+								<img src={story.image} alt={story.alt} loading="lazy" />
+							</div>
+							<div class="research-story-copy">
+								<h3>{story.title}</h3>
+								{story.body.map((paragraph) => (
+									<p>{paragraph}</p>
+								))}
+							</div>
+						</article>
+					))}
+				</div>
+				<div class="research-note">
+					<p>"the 30 individual sharks tagged in 2018" and "broader Tasman Sea connectivity."</p>
+					<p class="source-list">
+						Sources:
+						<a
+							href="https://australianmarineparks.gov.au/science/scientific-publications/lord-howe-island-shark-research-program/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Parks Australia program page
+						</a>
+						and
+						<a
+							href="https://australianmarineparks.gov.au/static/57682249d600e2657bb145a0e36f1c67/galapagos-sharks.pdf"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Galapagos sharks PDF
+						</a>
+					</p>
+				</div>
+			</section>
+
+			<section class="whales-section" id="tonga-whales">
+				<div class="section-heading whales-heading">
+					<p class="eyebrow">Seasonal adventure</p>
+					<h2>Expressions of interest: swim with whales in Tonga</h2>
+					<p>
+						Register your interest here first and I’ll send qualified leads through to the
+						resort experience. Once you submit, you’ll unlock the resort link and your
+						discount code to include in their enquiry form.
+					</p>
+				</div>
+				<div class="whales-grid">
+					<div class="whales-copy">
+						<div class="whales-feature">
+							<h3>How it works</h3>
+							<p>1. Submit your name and email here.</p>
+							<p>2. The resort is notified automatically that you came through Anika.</p>
+							<p>3. You immediately receive the resort link and discount code on screen.</p>
+							<p>4. Mention the code in the resort message field when you enquire.</p>
+						</div>
+						<div class="whales-feature">
+							<h3>Why register first</h3>
+							<p>
+								This keeps the referral clean for both the guest and the resort, and makes
+								sure your discount and Anika’s commission are correctly linked.
+							</p>
+						</div>
+					</div>
+
+					<div class="whales-card">
+						<form
+							id="whales-eoi-form"
+							class="whales-form"
+							name={whalesOffer.formName}
+							method="POST"
+							data-netlify="true"
+							netlify-honeypot="bot-field"
+						>
+							<input type="hidden" name="form-name" value={whalesOffer.formName} />
+							<input
+								type="hidden"
+								name="subject"
+								data-remove-prefix
+								value="New Tonga whale swim EOI from Anika Craney site"
+							/>
+							<input type="hidden" name="discountCode" value={whalesOffer.discountCode} />
+							<input type="hidden" name="resortUrl" value={whalesOffer.resortUrl} />
+							<label class="field">
+								<span>Name</span>
+								<input id="whales-name" name="name" type="text" autocomplete="name" required />
+							</label>
+							<label class="field">
+								<span>Email</span>
+								<input
+									id="whales-email"
+									name="email"
+									type="email"
+									autocomplete="email"
+									required
+								/>
+							</label>
+							<label class="trap" aria-hidden="true">
+								<span>Leave this field empty</span>
+								<input name="bot-field" type="text" tabindex="-1" autocomplete="off" />
+							</label>
+							<button class="button button-primary whales-submit" type="submit">
+								Get the resort link and discount
+							</button>
+							<p id="whales-form-status" class="form-status" role="status" aria-live="polite"></p>
+						</form>
+
+						<div id="whales-success" class="whales-success" hidden>
+							<p class="eyebrow">You’re in</p>
+							<h3>Your Tonga whale-swim details</h3>
+							<p>
+								Use this code in the message field on the resort site so your referral and
+								discount are linked correctly.
+							</p>
+							<div class="success-code">
+								<span>Discount code</span>
+								<strong id="whales-discount-code">{whalesOffer.discountCode}</strong>
+							</div>
+							<a
+								id="whales-resort-link"
+								class="button button-primary"
+								href={whalesOffer.resortUrl}
+								target="_blank"
+								rel="noreferrer"
+							>
+								Continue to resort site
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="cta-section" id="contact">
+				<div class="cta-panel">
+					<div>
+						<p class="eyebrow">Get in touch</p>
+						<h2>Contact Anika to start the conversation</h2>
+						<p>
+							Reach out to talk through private sessions, beginner training, breathwork, or
+							the right next step for your ocean confidence journey.
+						</p>
+						<div class="contact-list">
+							<a class="contact-card" href={contactLinks.email}>
+								<span class="contact-icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24">
+										<path
+											d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm2.22-.25L12 11.44l6.78-4.94H5.22Zm14.28 1.86-6.91 5.03a1 1 0 0 1-1.18 0L4.5 8.36v8.89c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25V8.36Z"
+											fill="currentColor"
+										/>
+									</svg>
+								</span>
+								<span>
+									<strong>Email</strong>
+									<small>anikacraney@gmail.com</small>
+								</span>
+							</a>
+							<a
+								class="contact-card"
+								href={contactLinks.instagramPersonal}
+								target="_blank"
+								rel="noreferrer"
+							>
+								<span class="contact-icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24">
+										<path
+											d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
+											fill="currentColor"
+										/>
+									</svg>
+								</span>
+								<span>
+									<strong>Instagram</strong>
+									<small>@nunufis</small>
+								</span>
+							</a>
+							<a
+								class="contact-card"
+								href={contactLinks.instagramBrand}
+								target="_blank"
+								rel="noreferrer"
+							>
+								<span class="contact-icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24">
+										<path
+											d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
+											fill="currentColor"
+										/>
+									</svg>
+								</span>
+								<span>
+									<strong>Freedive Instagram</strong>
+									<small>@lumarafreedive</small>
+								</span>
+							</a>
+						</div>
+					</div>
+					<div class="contact-actions">
+						<a class="button button-primary icon-button" href={contactLinks.email}>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm2.22-.25L12 11.44l6.78-4.94H5.22Zm14.28 1.86-6.91 5.03a1 1 0 0 1-1.18 0L4.5 8.36v8.89c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25V8.36Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Email</span>
+						</a>
+						<a
+							class="button button-secondary contact-button icon-button"
+							href={contactLinks.instagramBrand}
+							target="_blank"
+							rel="noreferrer"
+						>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>@lumarafreedive</span>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div>
+				<p class="eyebrow">Stay in the loop</p>
+				<p class="footer-copy">
+					Anika Craney offers calm, safety-first freediving experiences rooted in ocean
+					connection.
+				</p>
+			</div>
+			<div class="footer-links">
+				<a class="footer-pill" href={contactLinks.email} aria-label="Email Anika Craney">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm2.22-.25L12 11.44l6.78-4.94H5.22Zm14.28 1.86-6.91 5.03a1 1 0 0 1-1.18 0L4.5 8.36v8.89c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25V8.36Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+				<a
+					class="footer-pill"
+					href={contactLinks.instagramPersonal}
+					target="_blank"
+					rel="noreferrer"
+					aria-label="Instagram personal account"
+				>
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+				<a
+					class="footer-pill"
+					href={contactLinks.instagramBrand}
+					target="_blank"
+					rel="noreferrer"
+					aria-label="Instagram freedive account"
+				>
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
+							fill="currentColor"
+						/>
+					</svg>
+				</a>
+			</div>
+		</footer>
+	</div>
 </Layout>
+
+<script is:inline>
+	const form = document.querySelector('#whales-eoi-form');
+	const status = document.querySelector('#whales-form-status');
+	const success = document.querySelector('#whales-success');
+	const resortLink = document.querySelector('#whales-resort-link');
+
+	function encodeFormData(formData) {
+		return new URLSearchParams(
+			Array.from(formData.entries()).map(([key, value]) => [key, String(value)]),
+		).toString();
+	}
+
+	if (form instanceof HTMLFormElement && status && success && resortLink instanceof HTMLAnchorElement) {
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+
+			const submitButton = form.querySelector('button[type="submit"]');
+			if (!(submitButton instanceof HTMLButtonElement)) return;
+
+			const formData = new FormData(form);
+			const name = String(formData.get('name') || '').trim();
+			const email = String(formData.get('email') || '').trim();
+			const honeypot = String(formData.get('bot-field') || '').trim();
+
+			if (!name || !email) {
+				status.textContent = 'Please provide both your name and email.';
+				return;
+			}
+
+			if (honeypot) {
+				status.textContent = 'Submission blocked.';
+				return;
+			}
+
+			status.textContent = 'Submitting your expression of interest...';
+			success.hidden = true;
+			submitButton.disabled = true;
+
+			try {
+				const response = await fetch('/', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: encodeFormData(formData),
+				});
+
+				if (!response.ok) {
+					throw new Error('Something went wrong.');
+				}
+
+				status.textContent = 'Success. Your resort link and code are now unlocked below.';
+				success.hidden = false;
+				form.reset();
+			} catch (error) {
+				status.textContent =
+					error instanceof Error
+						? error.message
+						: 'We could not submit your details right now. Please try again.';
+			} finally {
+				submitButton.disabled = false;
+			}
+		});
+	}
+</script>
+
+<style>
+	.page-shell {
+		position: relative;
+		max-width: 1600px;
+		margin: 0 auto;
+		padding: 0 1rem 2rem;
+	}
+
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.1rem 0;
+		backdrop-filter: blur(18px);
+		background: color-mix(in srgb, var(--surface) 70%, transparent);
+	}
+
+	.brand,
+	.site-nav a,
+	.site-footer a {
+		color: var(--text);
+		text-decoration: none;
+	}
+
+	.brand {
+		font-family: var(--font-display);
+		font-size: clamp(1.35rem, 2vw, 1.7rem);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.site-nav {
+		display: flex;
+		gap: 1rem;
+		font-size: 0.95rem;
+	}
+
+	.site-nav a,
+	.site-footer a {
+		opacity: 0.85;
+		transition:
+			opacity 180ms ease,
+			color 180ms ease;
+	}
+
+	.site-nav a:hover,
+	.site-footer a:hover,
+	.brand:hover {
+		opacity: 1;
+		color: var(--accent);
+	}
+
+	.hero {
+		position: relative;
+		min-height: min(88vh, 860px);
+		display: grid;
+		align-items: end;
+		padding: clamp(2rem, 4vw, 3.5rem);
+		border-radius: 2rem;
+		overflow: hidden;
+		background:
+			linear-gradient(180deg, rgba(6, 17, 24, 0.14), rgba(6, 17, 24, 0.78)),
+			url('/images/hero.jpg') center 45% / cover no-repeat;
+		box-shadow: 0 32px 70px rgba(7, 18, 24, 0.18);
+	}
+
+	.hero::after {
+		content: '';
+		position: absolute;
+		inset: auto 0 0 0;
+		height: 45%;
+		background: linear-gradient(180deg, transparent, rgba(4, 12, 18, 0.58));
+	}
+
+	.hero-copy,
+	.hero-note {
+		position: relative;
+		z-index: 1;
+	}
+
+	.hero-copy {
+		max-width: 42rem;
+		color: #f3efe6;
+	}
+
+	.eyebrow {
+		margin: 0 0 0.6rem;
+		color: var(--accent-soft);
+		font-size: 0.78rem;
+		letter-spacing: 0.26em;
+		text-transform: uppercase;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		margin: 0;
+	}
+
+	h1 {
+		font-family: var(--font-display);
+		font-size: clamp(3.6rem, 8vw, 7rem);
+		line-height: 0.92;
+		letter-spacing: 0.03em;
+		max-width: 10ch;
+	}
+
+	h2,
+	h3 {
+		font-family: var(--font-display);
+		line-height: 0.97;
+	}
+
+	h2 {
+		font-size: clamp(2.2rem, 4vw, 3.8rem);
+	}
+
+	h3 {
+		font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+	}
+
+	.lede,
+	.about-copy p,
+	.cta-panel p,
+	.footer-copy,
+	.pillar p,
+	.whales-heading p,
+	.whales-feature p,
+	.form-status,
+	.whales-success p {
+		font-size: 1.02rem;
+		line-height: 1.75;
+	}
+
+	.lede {
+		margin-top: 1.3rem;
+		max-width: 33rem;
+		color: rgba(243, 239, 230, 0.88);
+	}
+
+	.hero-actions,
+	.contact-list,
+	.footer-links,
+	.contact-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+	}
+
+	.hero-actions {
+		margin-top: 1.7rem;
+	}
+
+	.contact-list {
+		margin-top: 1.15rem;
+		gap: 0.9rem;
+	}
+
+	.icon-button {
+		gap: 0.55rem;
+	}
+
+	.icon-button svg,
+	.footer-pill svg,
+	.contact-icon svg {
+		width: 1.05rem;
+		height: 1.05rem;
+		flex: 0 0 auto;
+	}
+
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.95rem 1.4rem;
+		border-radius: 999px;
+		text-decoration: none;
+		font-size: 0.96rem;
+		border: 0;
+		cursor: pointer;
+		transition:
+			transform 180ms ease,
+			background 180ms ease,
+			border-color 180ms ease,
+			color 180ms ease;
+	}
+
+	.button:hover {
+		transform: translateY(-2px);
+	}
+
+	.button:disabled {
+		opacity: 0.7;
+		cursor: wait;
+		transform: none;
+	}
+
+	.button-primary {
+		background: var(--accent);
+		color: #07202d;
+	}
+
+	.button-secondary {
+		background: rgba(243, 239, 230, 0.08);
+		color: #f3efe6;
+		border: 1px solid rgba(243, 239, 230, 0.26);
+	}
+
+	.button-glass {
+		background: rgba(255, 255, 255, 0.08);
+		color: #f3efe6;
+		border: 1px solid rgba(243, 239, 230, 0.18);
+	}
+
+	.contact-button {
+		color: var(--text);
+		background: rgba(16, 34, 45, 0.04);
+		border: 1px solid rgba(16, 34, 45, 0.12);
+	}
+
+	.hero-note {
+		justify-self: end;
+		max-width: 18rem;
+		margin-top: 2rem;
+		padding: 1rem 1.1rem;
+		border: 1px solid rgba(243, 239, 230, 0.2);
+		border-radius: 1rem;
+		background: rgba(4, 12, 18, 0.3);
+		color: rgba(243, 239, 230, 0.86);
+		backdrop-filter: blur(10px);
+	}
+
+	.pillars,
+	.gallery-section,
+	.about-section,
+	.research-section,
+	.whales-section,
+	.cta-section,
+	.site-footer {
+		margin-top: clamp(2rem, 5vw, 4.5rem);
+	}
+
+	.pillars {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.pillar,
+	.gallery-card,
+	.cta-panel,
+	.whales-card,
+	.whales-feature {
+		border: 1px solid var(--border);
+		background: rgba(250, 247, 240, 0.76);
+		backdrop-filter: blur(10px);
+	}
+
+	.pillar {
+		display: flex;
+		align-items: center;
+		gap: 0.95rem;
+		padding: 1.2rem 1.15rem;
+		border-radius: 1.1rem;
+	}
+
+	.pillar-mark {
+		width: 0.85rem;
+		height: 0.85rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+		flex: 0 0 auto;
+	}
+
+	.section-heading {
+		max-width: 38rem;
+		margin-bottom: 1.4rem;
+	}
+
+	.gallery-grid {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr 1fr;
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	.gallery-card {
+		margin: 0;
+		border-radius: 1.4rem;
+		overflow: hidden;
+	}
+
+	.gallery-card img,
+	.about-image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.gallery-card:nth-child(2) {
+		transform: translateY(2.25rem);
+	}
+
+	.about-section {
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+		gap: clamp(1.5rem, 4vw, 4rem);
+		align-items: center;
+	}
+
+	.about-image-wrap {
+		height: 100%;
+		min-height: 36rem;
+		border-radius: 1.7rem;
+		overflow: hidden;
+		box-shadow: 0 24px 54px rgba(7, 18, 24, 0.12);
+	}
+
+	.about-copy {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.whales-heading {
+		max-width: 52rem;
+	}
+
+	.research-intro {
+		margin-bottom: 1rem;
+		padding: 1rem 1.2rem;
+		border-left: 3px solid rgba(25, 85, 102, 0.35);
+		background: rgba(255, 255, 255, 0.4);
+		border-radius: 0.9rem;
+	}
+
+	.research-banner {
+		margin: 0 0 1rem;
+		border-radius: 1.5rem;
+		overflow: hidden;
+		border: 1px solid var(--border);
+		background: rgba(250, 247, 240, 0.76);
+	}
+
+	.research-banner img {
+		display: block;
+		width: 100%;
+		min-height: 24rem;
+		max-height: 34rem;
+		object-fit: cover;
+	}
+
+	.research-stories {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.research-story {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	.research-story.reverse {
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+	}
+
+	.research-story.reverse .research-story-image {
+		order: 2;
+	}
+
+	.research-story.reverse .research-story-copy {
+		order: 1;
+	}
+
+	.research-story-image,
+	.research-story-copy {
+		margin: 0;
+		border-radius: 1.35rem;
+		border: 1px solid var(--border);
+		background: rgba(250, 247, 240, 0.76);
+		backdrop-filter: blur(10px);
+	}
+
+	.research-story-image {
+		overflow: hidden;
+	}
+
+	.research-story-image img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: 18rem;
+		object-fit: cover;
+	}
+
+	.research-note {
+		border: 1px solid var(--border);
+		background: rgba(250, 247, 240, 0.76);
+		backdrop-filter: blur(10px);
+		border-radius: 1.35rem;
+	}
+
+	.research-story-copy {
+		padding: 1.4rem;
+		display: grid;
+		gap: 0.8rem;
+	}
+
+	.research-note {
+		margin-top: 1rem;
+		padding: 1.2rem 1.4rem;
+	}
+
+	.source-list {
+		margin-top: 0.8rem;
+	}
+
+	.source-list a {
+		color: var(--accent-deep);
+		text-decoration: none;
+		border-bottom: 1px solid rgba(25, 85, 102, 0.22);
+	}
+
+	.source-list a:hover {
+		border-color: rgba(25, 85, 102, 0.5);
+	}
+
+	.whales-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+		gap: 1rem;
+		align-items: start;
+	}
+
+	.whales-copy {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.whales-feature {
+		padding: 1.4rem;
+		border-radius: 1.35rem;
+	}
+
+	.whales-card,
+	.cta-panel {
+		padding: clamp(1.4rem, 3vw, 2rem);
+		border-radius: 1.5rem;
+	}
+
+	.whales-form {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.field {
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.field span {
+		font-size: 0.84rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	.field input {
+		width: 100%;
+		padding: 0.95rem 1rem;
+		border-radius: 0.95rem;
+		border: 1px solid rgba(16, 34, 45, 0.14);
+		background: rgba(255, 255, 255, 0.72);
+		color: var(--text);
+		font: inherit;
+	}
+
+	.field input:focus {
+		outline: 2px solid rgba(25, 85, 102, 0.18);
+		border-color: rgba(25, 85, 102, 0.35);
+	}
+
+	.trap {
+		position: absolute;
+		left: -9999px;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.whales-submit {
+		width: 100%;
+	}
+
+	.form-status {
+		min-height: 1.75rem;
+	}
+
+	.whales-success {
+		display: grid;
+		gap: 1rem;
+		padding-top: 1.4rem;
+		margin-top: 1.4rem;
+		border-top: 1px solid rgba(16, 34, 45, 0.12);
+	}
+
+	.success-code {
+		display: inline-grid;
+		gap: 0.2rem;
+		padding: 0.95rem 1rem;
+		border-radius: 1rem;
+		background: rgba(16, 34, 45, 0.05);
+	}
+
+	.success-code span {
+		font-size: 0.78rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	.success-code strong {
+		font-size: clamp(1.3rem, 2vw, 1.7rem);
+		letter-spacing: 0.08em;
+	}
+
+	.contact-card {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		min-width: min(100%, 16rem);
+		padding: 0.95rem 1rem;
+		color: var(--text);
+		text-decoration: none;
+		border: 1px solid rgba(16, 34, 45, 0.12);
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.56);
+		transition:
+			transform 180ms ease,
+			border-color 180ms ease,
+			background 180ms ease;
+	}
+
+	.contact-card:hover {
+		transform: translateY(-2px);
+		border-color: rgba(25, 85, 102, 0.35);
+		background: rgba(255, 255, 255, 0.82);
+	}
+
+	.contact-card span:last-child {
+		display: grid;
+		gap: 0.15rem;
+	}
+
+	.contact-card strong {
+		font-size: 0.95rem;
+	}
+
+	.contact-card small {
+		font-size: 0.8rem;
+		color: var(--muted);
+	}
+
+	.contact-icon,
+	.footer-pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.contact-icon {
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 999px;
+		background: rgba(158, 213, 214, 0.22);
+		color: var(--accent-deep);
+	}
+
+	.footer-links a {
+		color: var(--text);
+		text-decoration: none;
+	}
+
+	.footer-pill {
+		width: 2.7rem;
+		height: 2.7rem;
+		border-radius: 999px;
+		background: rgba(16, 34, 45, 0.04);
+		border: 1px solid rgba(16, 34, 45, 0.12);
+		color: var(--text);
+		transition:
+			transform 180ms ease,
+			color 180ms ease,
+			border-color 180ms ease,
+			background 180ms ease;
+	}
+
+	.footer-pill:hover {
+		transform: translateY(-2px);
+		color: var(--accent-deep);
+		border-color: rgba(25, 85, 102, 0.3);
+		background: rgba(158, 213, 214, 0.15);
+	}
+
+	.cta-panel {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.site-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 1rem;
+		padding: 1.8rem 0 0.5rem;
+		border-top: 1px solid var(--border);
+	}
+
+	@media (max-width: 960px) {
+		.site-header,
+		.site-footer {
+			gap: 1rem;
+		}
+
+		.pillars,
+		.gallery-grid,
+		.about-section,
+		.research-story,
+		.whales-grid,
+		.cta-panel,
+		.site-footer {
+			grid-template-columns: 1fr;
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.research-story.reverse .research-story-image,
+		.research-story.reverse .research-story-copy {
+			order: initial;
+		}
+
+		.gallery-card:nth-child(2) {
+			transform: none;
+		}
+
+		.hero-note {
+			justify-self: start;
+		}
+
+		.about-image-wrap {
+			min-height: 24rem;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.page-shell {
+			padding-inline: 0.8rem;
+		}
+
+		.site-header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.site-nav {
+			flex-wrap: wrap;
+		}
+
+		.hero {
+			min-height: 78vh;
+			padding: 1.3rem;
+		}
+
+		h1 {
+			font-size: clamp(2.9rem, 16vw, 4.5rem);
+		}
+
+		h2 {
+			font-size: clamp(2rem, 10vw, 3rem);
+		}
+
+		.contact-card {
+			min-width: 100%;
+		}
+	}
+</style>

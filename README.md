@@ -1,46 +1,34 @@
-# Astro Starter Kit: Basics
+# Anika Craney Site
+
+Astro site for Anika Craney, including a Tonga whale-swim expressions-of-interest flow powered by Netlify Forms.
+
+- collects `name` and `email`
+- sends a Netlify form notification email to Anika
+- reveals the discount code and resort link only after successful submission
+
+## Local Setup
+
+1. Install dependencies:
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+2. Start local development:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run dev
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Netlify Form Setup
 
-## 🧞 Commands
+1. Deploy the site to Netlify.
+2. Make sure form detection is enabled in Netlify.
+3. In Netlify, add an email notification for the `tonga-whales-eoi` form.
+4. Set the hidden `resortUrl` and `discountCode` field values in [src/pages/index.astro](/Users/jamesdawson/github-jimothy/lumara/src/pages/index.astro) to the real resort URL and code.
 
-All commands are run from the root of the project, from a terminal:
+## Commands
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `npm run dev` starts the local dev server
+- `npm run build` builds the production site
+- `npm run preview` previews the production build locally
