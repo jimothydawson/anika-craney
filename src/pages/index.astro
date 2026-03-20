@@ -62,7 +62,7 @@ const researchNote = {
 	title: 'Meet the Galapagos sharks',
 	image: '/images/D877_C011_1019LC.0001041.JPG',
 	alt: 'A school of Galapagos sharks moving through blue water near Lord Howe Island.',
-	body: 'Galapagos sharks — also known as whaler sharks — were first described from the Galápagos Islands. Around Lord Howe Island, most individuals encountered are immature, reaching around two metres in length at maturity between six and nine years of age. They feed on pelagic fish, reef fish, and squid. The waters surrounding Lord Howe Island and Elizabeth and Middleton Reefs serve as important nursery areas for the species.',
+	body: "Galapagos sharks — also known as whaler sharks — were first described from the Galápagos Islands. Around Lord Howe Island, most individuals encountered are immature, reaching around two metres in length at maturity between six and nine years of age. They feed on pelagic fish, reef fish, and squid. The waters surrounding Lord Howe Island and Elizabeth and Middleton Reefs serve as important nursery areas for the species. To support the continued research and monitoring of this population, visit the program's GoFundMe page.",
 };
 
 const contactLinks = {
@@ -199,8 +199,10 @@ const whalesOffer = {
 					<p>
 						Anika contributes to this program as a citizen science research assistant,
 						supporting fieldwork in the waters surrounding Lord Howe Island. The program is
-						led by Dr Jonathan Mitchell at the University of Western Australia, with funding
-						from Parks Australia and in-kind support from NSW DPIRD.
+						led by Dr Jonathan Mitchell and Dr Victoria Camilieri-Asch at the University of
+						Western Australia, with funding from Parks Australia and in-kind support from
+						NSW DPIRD. The program relies on ongoing community support — you can contribute
+						via their GoFundMe campaign.
 					</p>
 				</div>
 				<figure class="research-banner">
@@ -320,6 +322,7 @@ const whalesOffer = {
 						id="whales-eoi-form"
 						class="whales-form"
 						name={whalesOffer.formName}
+						action="/thanks/"
 						method="POST"
 						data-netlify="true"
 						netlify-honeypot="bot-field"
@@ -352,15 +355,7 @@ const whalesOffer = {
 						<button class="button button-primary whales-submit" type="submit">
 							Register interest
 						</button>
-						<p id="whales-form-status" class="form-status" role="status" aria-live="polite"></p>
 					</form>
-
-					<div id="whales-success" class="whales-success" hidden>
-						<h3>Thanks &mdash; you&apos;re on the list</h3>
-						<p>
-							Anika will be in touch as trip details are finalised.
-						</p>
-					</div>
 				</div>
 			</section>
 
@@ -481,71 +476,6 @@ const whalesOffer = {
 		</footer>
 	</div>
 </Layout>
-
-<script is:inline>
-	const form = document.querySelector('#whales-eoi-form');
-	const status = document.querySelector('#whales-form-status');
-	const success = document.querySelector('#whales-success');
-
-	function encodeFormData(formData) {
-		return new URLSearchParams(
-			Array.from(formData.entries()).map(([key, value]) => [key, String(value)]),
-		).toString();
-	}
-
-	if (form instanceof HTMLFormElement && status && success) {
-		form.addEventListener('submit', async (event) => {
-			event.preventDefault();
-
-			const submitButton = form.querySelector('button[type="submit"]');
-			if (!(submitButton instanceof HTMLButtonElement)) return;
-
-			const formData = new FormData(form);
-			const name = String(formData.get('name') || '').trim();
-			const email = String(formData.get('email') || '').trim();
-			const honeypot = String(formData.get('bot-field') || '').trim();
-
-			if (!name || !email) {
-				status.textContent = 'Please provide both your name and email.';
-				return;
-			}
-
-			if (honeypot) {
-				status.textContent = 'Submission blocked.';
-				return;
-			}
-
-			status.textContent = 'Submitting your expression of interest...';
-			success.hidden = true;
-			submitButton.disabled = true;
-
-			try {
-				const response = await fetch('/', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded',
-					},
-					body: encodeFormData(formData),
-				});
-
-				if (!response.ok) {
-					throw new Error('Something went wrong.');
-				}
-
-				status.textContent = '';
-				success.hidden = false;
-				form.reset();
-			} catch (error) {
-				status.textContent =
-					error instanceof Error
-						? error.message
-						: 'We could not submit your details right now. Please try again.';
-			} finally {
-				submitButton.disabled = false;
-			}
-		});
-	}
-</script>
 
 <style>
 	.page-shell {
@@ -1106,22 +1036,6 @@ const whalesOffer = {
 
 	.whales-submit {
 		width: 100%;
-	}
-
-	.form-status {
-		min-height: 1.75rem;
-	}
-
-	.whales-success {
-		display: grid;
-		gap: 0.55rem;
-		padding-top: 1rem;
-		margin-top: 1rem;
-		border-top: 1px solid rgba(16, 34, 45, 0.12);
-	}
-
-	.whales-success[hidden] {
-		display: none !important;
 	}
 
 	.contact-card {
