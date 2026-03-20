@@ -23,39 +23,46 @@ const researchBannerImage = {
 
 const researchStories = [
 	{
-		title: '"occur in high abundance"',
-		image: '/images/D877_C016_1019B9.0002196.JPG',
-		alt: 'Shark image supporting the program focus summary.',
+		title: 'Understanding movement ecology',
+		image: '/images/D877_C002_1019K1.0000366.JPG',
+		alt: 'Galapagos sharks swimming over coral reef habitat near Lord Howe Island.',
 		body: [
-			'"important indicator species for marine park management."',
-			'"testing deterrents to reduce shark bycatch and depredation" and "continuation of the deepwater acoustic receiver array."',
+			'The research program was started by marine park managers from NSW DPIRD and Parks Australia to address depredation — the loss of hooked fish to sharks before they can be retrieved. They partnered with scientists at the University of Western Australia and the Integrated Marine Observation System to better understand the Galapagos sharks in these waters.',
+			'The program has been running since 2018, using acoustic tracking and vessel monitoring system data to study movement patterns, residency, depth range, and overlap with fishing vessel activity. Thirty individual sharks were tagged in the first year, establishing baseline knowledge that continues to inform management as the animals reach maturity.',
 		],
 	},
 	{
-		title: '"generated important baseline knowledge"',
+		title: 'Key findings',
 		image: '/images/D877_C023_10191H.0000850.JPG',
-		alt: 'Shark image supporting the research methods and monitoring summary.',
+		alt: 'Research image illustrating shark movement and monitoring work.',
 		body: [
-			'"commenced in 2018" and "generated important baseline knowledge on their movement patterns, residency, depth range and overlap with fishing vessel activity."',
-			'"assess movement patterns, fisher-shark interactions, population size, connectivity" using "acoustic tracking" and "vessel monitoring system data."',
+			'These sharks are mostly resident in Lord Howe Island waters. Their home ranges varied from 1 to 1,200 square kilometres, with some individuals moving up to 12 kilometres per day. Their presence peaks in spring and summer, and they are most active between 30 and 100 metres depth — a range that overlaps with popular fishing areas and fish cleaning sites.',
+			'The current phase of the project is also testing electrical and magnetic shark deterrent devices to reduce bycatch and depredation, using a two-phase approach. The aim is to find practical solutions that promote coexistence between fishers and sharks.',
 		],
 	},
 	{
-		title: '"mostly remained resident"',
+		title: 'Why it matters',
 		image: '/images/nunu-1731.jpg',
-		alt: 'Field image supporting the published findings summary.',
+		alt: 'Diver in the water during fieldwork around Lord Howe Island.',
 		body: [
-			'"up to 12 km per day," "spring and summer" and "30-100 m."',
-			'"long term monitoring of the population is valuable" and "maintaining the array will provide vital ongoing benefits."',
+			'Galapagos sharks are an important indicator species for marine park management. Their abundant population in the waters around Lord Howe Island signals a healthy marine ecosystem, and they can be encountered safely in-water without the use of bait or attractants, providing rewarding experiences for divers and snorkellers.',
+			'Continuing the acoustic receiver array is recommended to further monitor this population and provide new insights into the movement ecology of adult Galapagos sharks, which remains limited worldwide. Maintaining the array will also provide vital ongoing benefits for investigating connectivity of marine megafauna across the Tasman Sea region.',
 		],
 	},
 ];
 
 const pillars = [
-	'Certified freediving instruction',
-	'Holistic approach to wellbeing',
-	'Safe, supportive environment',
+	'Certified freediving instructor',
+	'Citizen science research assistant',
+	'Ocean guide and educator',
 ];
+
+const researchNote = {
+	title: 'Meet the Galapagos sharks',
+	image: '/images/D877_C011_1019LC.0001041.JPG',
+	alt: 'A school of Galapagos sharks moving through blue water near Lord Howe Island.',
+	body: 'Galapagos sharks — also known as whaler sharks — were first described from the Galápagos Islands. Around Lord Howe Island, most individuals encountered are immature, reaching around two metres in length at maturity between six and nine years of age. They feed on pelagic fish, reef fish, and squid. The waters surrounding Lord Howe Island and Elizabeth and Middleton Reefs serve as important nursery areas for the species.',
+};
 
 const contactLinks = {
 	email: 'mailto:anikacraney@gmail.com',
@@ -65,17 +72,16 @@ const contactLinks = {
 
 const whalesOffer = {
 	formName: 'tonga-whales-eoi',
-	discountCode: 'ANIKA',
-	resortUrl: 'https://example-resort-site.com/',
+	resortUrl: 'https://www.haapaibeachresort.com/',
 };
 ---
 
 <Layout
 	title="Anika Craney"
-	description="Freediving experiences shaped by ocean connection, breathwork, and mindful confidence."
+	description="Freediving instruction, marine research, and ocean experiences shaped by stillness, confidence, and a deeper connection with the sea."
 >
-	<div class="page-shell">
-		<header class="site-header">
+	<header class="site-header">
+		<div class="header-inner">
 			<a class="brand" href="#top">Anika Craney</a>
 			<nav class="site-nav" aria-label="Primary">
 				<a href="#about">About</a>
@@ -84,16 +90,18 @@ const whalesOffer = {
 				<a href="#tonga-whales">Tonga</a>
 				<a href="#contact">Contact</a>
 			</nav>
-		</header>
+		</div>
+	</header>
 
+	<div class="page-shell">
 		<main id="top">
 			<section class="hero">
 				<div class="hero-copy">
 					<p class="eyebrow">Anika Craney</p>
 					<h1>MAKE FRIENDS WITH YOUR FEARS</h1>
 					<p class="lede">
-						Freediving experiences rooted in stillness, confidence, and a deeper connection
-						with the ocean.
+						Freediving instruction, marine research, and ocean experiences &mdash; shaped by
+						stillness, confidence, and a deeper connection with the sea.
 					</p>
 					<div class="hero-actions">
 						<a class="button button-primary icon-button" href={contactLinks.email}>
@@ -123,11 +131,11 @@ const whalesOffer = {
 					</div>
 				</div>
 				<div class="hero-note">
-					<p>Freediving experiences with Anika Craney.</p>
+					<p>Freediving, research, and whale swims with Anika Craney.</p>
 				</div>
 			</section>
 
-			<section class="pillars" aria-label="Brand values">
+			<section class="pillars" aria-label="Professional roles">
 				{pillars.map((pillar) => (
 					<div class="pillar">
 						<span class="pillar-mark"></span>
@@ -136,71 +144,62 @@ const whalesOffer = {
 				))}
 			</section>
 
-			<section class="gallery-section" id="gallery">
-				<div class="section-heading">
-					<p class="eyebrow">Ocean moments</p>
-					<h2>A visual journal with Anika</h2>
-				</div>
-				<div class="gallery-grid">
-					{galleryImages.map((image) => (
-						<figure class="gallery-card">
-							<img src={image.src} alt={image.alt} loading="lazy" />
-						</figure>
-					))}
-				</div>
-			</section>
-
 			<section class="about-section" id="about">
 				<div class="about-image-wrap">
 					<img
 						class="about-image"
-						src="/images/about.jpg"
-						alt="Anika Craney at the shoreline with the sea behind her."
+						src="/images/nunu-1681.JPG"
+						alt="Portrait of Anika Craney outdoors near the coast."
 						loading="lazy"
 					/>
 				</div>
 				<div class="about-copy">
-					<p class="eyebrow">Founder story</p>
+					<p class="eyebrow">About</p>
 					<h2>Anika Craney</h2>
 					<p>
-						Hi, I’m Anika Craney. I created this offering to share my passion for freediving,
-						the ocean, and the life-changing power of reconnecting with nature.
+						I&apos;m Anika &mdash; a freediver, ocean guide, and citizen science research
+						assistant based between the Australian east coast and Lord Howe Island.
 					</p>
 					<p>
-						My journey into freediving began as a personal search for stillness and strength.
-						I discovered that holding my breath beneath the surface was more than a skill; it
-						was a way to quiet the mind, release stress, and feel deeply present. Over time,
-						the ocean became my classroom, my playground, and my greatest teacher.
+						My path into freediving started as a personal search for stillness. Holding my
+						breath beneath the surface turned out to be more than a skill &mdash; it became a
+						way to quiet the mind, release tension, and feel deeply present. Over time, the
+						ocean became my classroom, my playground, and my greatest teacher.
 					</p>
 					<p>
-						Through my work, I combine <strong>certified freediving instruction</strong> with
-						a <strong>holistic approach to wellbeing</strong>. Whether you’re here to learn new
-						diving skills, overcome fear, or simply experience the beauty of the ocean, my
-						goal is to create a <strong>safe, supportive environment</strong> where you can
-						grow at your own pace.
+						Today my work sits at the intersection of freediving instruction, marine
+						research, and ocean education. I hold freediving certifications and contribute as
+						a research assistant on the Lord Howe Island shark research program, studying
+						Galapagos shark ecology alongside scientists from the University of Western
+						Australia and Parks Australia.
 					</p>
 					<p>
-						I also contribute as a <strong>citizen science research assistant</strong> on the
-						Lord Howe Island shark research program, and I’m currently taking expressions of
-						interest for <strong>Tonga whale swims from July to October 2026</strong>.
+						I&apos;m currently taking expressions of interest for whale swims in Tonga from
+						July to October 2026.
 					</p>
 					<p>
-						I believe freediving isn’t just about depth. It’s about confidence, self-trust,
-						and connection. That’s why my programs blend breathwork, ocean safety, and skill
-						development with elements of nature connection and mindfulness.
+						Whether you&apos;re here to learn to freedive, face a fear of the ocean, or
+						connect with nature in a deeper way &mdash; I create safe, supportive experiences
+						that meet you where you are.
 					</p>
 				</div>
 			</section>
 
 			<section class="research-section" id="research">
 				<div class="section-heading research-heading">
-					<p class="eyebrow">Official program overview</p>
+					<p class="eyebrow">Marine research</p>
 					<h2>Lord Howe Island shark research program</h2>
-					<p>Official excerpts from the published program material.</p>
+					<p>
+						A collaborative study of Galapagos shark ecology, fisher–shark interactions, and
+						deterrent testing in the marine parks surrounding Lord Howe Island.
+					</p>
 				</div>
 				<div class="research-intro">
 					<p>
-						Anika contributes to this program as a <strong>citizen science research assistant</strong>.
+						Anika contributes to this program as a citizen science research assistant,
+						supporting fieldwork in the waters surrounding Lord Howe Island. The program is
+						led by Dr Jonathan Mitchell at the University of Western Australia, with funding
+						from Parks Australia and in-kind support from NSW DPIRD.
 					</p>
 				</div>
 				<figure class="research-banner">
@@ -226,119 +225,142 @@ const whalesOffer = {
 					))}
 				</div>
 				<div class="research-note">
-					<p>"the 30 individual sharks tagged in 2018" and "broader Tasman Sea connectivity."</p>
-					<p class="source-list">
-						Sources:
-						<a
-							href="https://australianmarineparks.gov.au/science/scientific-publications/lord-howe-island-shark-research-program/"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Parks Australia program page
-						</a>
-						and
-						<a
-							href="https://australianmarineparks.gov.au/static/57682249d600e2657bb145a0e36f1c67/galapagos-sharks.pdf"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Galapagos sharks PDF
-						</a>
+					<div class="research-note-copy">
+						<h3>{researchNote.title}</h3>
+						<p>{researchNote.body}</p>
+						<p class="source-list">
+							Sources:
+							<a
+								href="https://australianmarineparks.gov.au/science/scientific-publications/lord-howe-island-shark-research-program/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Parks Australia program page
+							</a>
+							and
+							<a
+								href="https://australianmarineparks.gov.au/static/57682249d600e2657bb145a0e36f1c67/galapagos-sharks.pdf"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Galapagos sharks PDF
+							</a>
+						</p>
+					</div>
+					<div class="research-note-image">
+						<img src={researchNote.image} alt={researchNote.alt} loading="lazy" />
+					</div>
+				</div>
+			</section>
+
+			<section class="gallery-section" id="gallery">
+				<div class="section-heading">
+					<p class="eyebrow">A visual journal with Anika</p>
+					<h2>In the water</h2>
+				</div>
+				<div class="gallery-grid">
+					{galleryImages.map((image) => (
+						<figure class="gallery-card">
+							<img src={image.src} alt={image.alt} loading="lazy" />
+						</figure>
+					))}
+				</div>
+			</section>
+
+			<section class="tonga-section" id="tonga-whales">
+				<div class="tonga-panel">
+					<p class="eyebrow">July &ndash; October 2026</p>
+					<h2>Swim with humpback whales in Tonga</h2>
+					<p>
+						Every year from mid-July to mid-October, humpback whales migrate from the
+						Antarctic to the warm, calm waters of Ha&apos;apai in the Kingdom of Tonga
+						&mdash; to breed, give birth, and nurse their young. Tonga is one of only a few
+						countries in the world where you&apos;re permitted to snorkel alongside humpback
+						whales.
+					</p>
+					<p>
+						Anika is coordinating guided whale swim trips based at Ha&apos;apai Beach Resort
+						on Lifuka Island &mdash; a beachfront resort nestled right on the sand,
+						overlooking turquoise waters and the surrounding islands. Five-night and
+						seven-night packages are available.
+					</p>
+					<p>
+						Trips depart daily from the main wharf in Pangai, with professional, fully
+						licensed guides who prioritise the welfare of the whales and the safety of
+						guests. In-water encounters are conducted with a soft, respectful approach
+						&mdash; if the whales show signs of being disturbed, contact is ceased and the
+						search continues for animals that are more comfortable interacting.
+					</p>
+					<p>
+						Register your interest below and Anika will be in touch with details,
+						availability, and any offers as they&apos;re confirmed.
+					</p>
+					<figure class="tonga-image">
+						<img
+							src="/images/haapai-whale-swimming.jpg"
+							alt="Guests swimming alongside a humpback whale in Ha'apai, Tonga."
+							loading="lazy"
+						/>
+					</figure>
+					<p class="tonga-link">
+						Learn more about the resort at
+						<a href={whalesOffer.resortUrl} target="_blank" rel="noreferrer">
+							Ha&apos;apai Beach Resort
+						</a>.
 					</p>
 				</div>
 			</section>
 
-			<section class="whales-section" id="tonga-whales">
-				<div class="section-heading whales-heading">
-					<p class="eyebrow">Seasonal adventure</p>
-					<h2>Expressions of interest: swim with whales in Tonga</h2>
-					<p>
-						Register your interest here first and I’ll send qualified leads through to the
-						resort experience. Once you submit, you’ll unlock the resort link and your
-						discount code to include in their enquiry form.
+			<section class="whales-section" aria-label="Tonga whale swims interest form">
+				<div class="whales-card">
+					<p class="whales-intro">
+						Register your interest and Anika will be in touch with details, availability,
+						and any offers as they&apos;re confirmed.
 					</p>
-				</div>
-				<div class="whales-grid">
-					<div class="whales-copy">
-						<div class="whales-feature">
-							<h3>How it works</h3>
-							<p>1. Submit your name and email here.</p>
-							<p>2. The resort is notified automatically that you came through Anika.</p>
-							<p>3. You immediately receive the resort link and discount code on screen.</p>
-							<p>4. Mention the code in the resort message field when you enquire.</p>
-						</div>
-						<div class="whales-feature">
-							<h3>Why register first</h3>
-							<p>
-								This keeps the referral clean for both the guest and the resort, and makes
-								sure your discount and Anika’s commission are correctly linked.
-							</p>
-						</div>
-					</div>
-
-					<div class="whales-card">
-						<form
-							id="whales-eoi-form"
-							class="whales-form"
-							name={whalesOffer.formName}
-							method="POST"
-							data-netlify="true"
-							netlify-honeypot="bot-field"
-						>
-							<input type="hidden" name="form-name" value={whalesOffer.formName} />
+					<form
+						id="whales-eoi-form"
+						class="whales-form"
+						name={whalesOffer.formName}
+						method="POST"
+						data-netlify="true"
+						netlify-honeypot="bot-field"
+					>
+						<input type="hidden" name="form-name" value={whalesOffer.formName} />
+						<input
+							type="hidden"
+							name="subject"
+							data-remove-prefix
+							value="New Tonga whale swim EOI from Anika Craney site"
+						/>
+						<label class="field">
+							<span>Name</span>
+							<input id="whales-name" name="name" type="text" autocomplete="name" required />
+						</label>
+						<label class="field">
+							<span>Email</span>
 							<input
-								type="hidden"
-								name="subject"
-								data-remove-prefix
-								value="New Tonga whale swim EOI from Anika Craney site"
+								id="whales-email"
+								name="email"
+								type="email"
+								autocomplete="email"
+								required
 							/>
-							<input type="hidden" name="discountCode" value={whalesOffer.discountCode} />
-							<input type="hidden" name="resortUrl" value={whalesOffer.resortUrl} />
-							<label class="field">
-								<span>Name</span>
-								<input id="whales-name" name="name" type="text" autocomplete="name" required />
-							</label>
-							<label class="field">
-								<span>Email</span>
-								<input
-									id="whales-email"
-									name="email"
-									type="email"
-									autocomplete="email"
-									required
-								/>
-							</label>
-							<label class="trap" aria-hidden="true">
-								<span>Leave this field empty</span>
-								<input name="bot-field" type="text" tabindex="-1" autocomplete="off" />
-							</label>
-							<button class="button button-primary whales-submit" type="submit">
-								Get the resort link and discount
-							</button>
-							<p id="whales-form-status" class="form-status" role="status" aria-live="polite"></p>
-						</form>
+						</label>
+						<label class="trap" aria-hidden="true">
+							<span>Leave this field empty</span>
+							<input name="bot-field" type="text" tabindex="-1" autocomplete="off" />
+						</label>
+						<button class="button button-primary whales-submit" type="submit">
+							Register interest
+						</button>
+						<p id="whales-form-status" class="form-status" role="status" aria-live="polite"></p>
+					</form>
 
-						<div id="whales-success" class="whales-success" hidden>
-							<p class="eyebrow">You’re in</p>
-							<h3>Your Tonga whale-swim details</h3>
-							<p>
-								Use this code in the message field on the resort site so your referral and
-								discount are linked correctly.
-							</p>
-							<div class="success-code">
-								<span>Discount code</span>
-								<strong id="whales-discount-code">{whalesOffer.discountCode}</strong>
-							</div>
-							<a
-								id="whales-resort-link"
-								class="button button-primary"
-								href={whalesOffer.resortUrl}
-								target="_blank"
-								rel="noreferrer"
-							>
-								Continue to resort site
-							</a>
-						</div>
+					<div id="whales-success" class="whales-success" hidden>
+						<h3>Thanks &mdash; you&apos;re on the list</h3>
+						<p>
+							Anika will be in touch as trip details are finalised.
+						</p>
 					</div>
 				</div>
 			</section>
@@ -347,10 +369,10 @@ const whalesOffer = {
 				<div class="cta-panel">
 					<div>
 						<p class="eyebrow">Get in touch</p>
-						<h2>Contact Anika to start the conversation</h2>
+						<h2>Start a conversation with Anika</h2>
 						<p>
-							Reach out to talk through private sessions, beginner training, breathwork, or
-							the right next step for your ocean confidence journey.
+							Reach out about freediving sessions, breathwork, ocean experiences, the Tonga
+							whale swims, or anything else.
 						</p>
 						<div class="contact-list">
 							<a class="contact-card" href={contactLinks.email}>
@@ -438,10 +460,10 @@ const whalesOffer = {
 
 		<footer class="site-footer">
 			<div>
-				<p class="eyebrow">Stay in the loop</p>
+				<p class="eyebrow">Anika Craney</p>
 				<p class="footer-copy">
-					Anika Craney offers calm, safety-first freediving experiences rooted in ocean
-					connection.
+					Freediving instruction, marine research, and ocean experiences &mdash; rooted in
+					stillness and connection.
 				</p>
 			</div>
 			<div class="footer-links">
@@ -490,7 +512,6 @@ const whalesOffer = {
 	const form = document.querySelector('#whales-eoi-form');
 	const status = document.querySelector('#whales-form-status');
 	const success = document.querySelector('#whales-success');
-	const resortLink = document.querySelector('#whales-resort-link');
 
 	function encodeFormData(formData) {
 		return new URLSearchParams(
@@ -498,7 +519,7 @@ const whalesOffer = {
 		).toString();
 	}
 
-	if (form instanceof HTMLFormElement && status && success && resortLink instanceof HTMLAnchorElement) {
+	if (form instanceof HTMLFormElement && status && success) {
 		form.addEventListener('submit', async (event) => {
 			event.preventDefault();
 
@@ -537,7 +558,7 @@ const whalesOffer = {
 					throw new Error('Something went wrong.');
 				}
 
-				status.textContent = 'Success. Your resort link and code are now unlocked below.';
+				status.textContent = '';
 				success.hidden = false;
 				form.reset();
 			} catch (error) {
@@ -564,12 +585,19 @@ const whalesOffer = {
 		position: sticky;
 		top: 0;
 		z-index: 10;
+		width: 100%;
+		padding: 0 1rem;
+		backdrop-filter: blur(18px);
+		background: color-mix(in srgb, var(--surface) 70%, transparent);
+	}
+
+	.header-inner {
+		max-width: 1600px;
+		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding: 1.1rem 0;
-		backdrop-filter: blur(18px);
-		background: color-mix(in srgb, var(--surface) 70%, transparent);
 	}
 
 	.brand,
@@ -642,10 +670,14 @@ const whalesOffer = {
 
 	.eyebrow {
 		margin: 0 0 0.6rem;
-		color: var(--accent-soft);
+		color: var(--accent-deep);
 		font-size: 0.78rem;
 		letter-spacing: 0.26em;
 		text-transform: uppercase;
+	}
+
+	.hero .eyebrow {
+		color: var(--accent-soft);
 	}
 
 	h1,
@@ -667,6 +699,7 @@ const whalesOffer = {
 	h3 {
 		font-family: var(--font-display);
 		line-height: 0.97;
+		text-transform: uppercase;
 	}
 
 	h2 {
@@ -682,8 +715,12 @@ const whalesOffer = {
 	.cta-panel p,
 	.footer-copy,
 	.pillar p,
-	.whales-heading p,
-	.whales-feature p,
+	.research-heading > p:not(.eyebrow),
+	.research-intro p,
+	.research-story-copy p,
+	.research-note p,
+	.tonga-panel > p:not(.eyebrow),
+	.whales-heading > p:not(.eyebrow),
 	.form-status,
 	.whales-success p {
 		font-size: 1.02rem;
@@ -792,6 +829,7 @@ const whalesOffer = {
 	.gallery-section,
 	.about-section,
 	.research-section,
+	.tonga-section,
 	.whales-section,
 	.cta-section,
 	.site-footer {
@@ -807,8 +845,8 @@ const whalesOffer = {
 	.pillar,
 	.gallery-card,
 	.cta-panel,
-	.whales-card,
-	.whales-feature {
+	.tonga-panel,
+	.whales-card {
 		border: 1px solid var(--border);
 		background: rgba(250, 247, 240, 0.76);
 		backdrop-filter: blur(10px);
@@ -886,10 +924,10 @@ const whalesOffer = {
 
 	.research-intro {
 		margin-bottom: 1rem;
-		padding: 1rem 1.2rem;
-		border-left: 3px solid rgba(25, 85, 102, 0.35);
-		background: rgba(255, 255, 255, 0.4);
-		border-radius: 0.9rem;
+		padding: 1.2rem 1.3rem;
+		border: 1px solid rgba(25, 85, 102, 0.18);
+		background: rgba(255, 255, 255, 0.48);
+		border-radius: 1rem;
 	}
 
 	.research-banner {
@@ -969,6 +1007,28 @@ const whalesOffer = {
 	.research-note {
 		margin-top: 1rem;
 		padding: 1.2rem 1.4rem;
+		display: grid;
+		grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+		gap: 1rem;
+		align-items: stretch;
+	}
+
+	.research-note-image {
+		border-radius: 1.1rem;
+		overflow: hidden;
+		min-height: 18rem;
+	}
+
+	.research-note-image img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.research-note-copy {
+		display: grid;
+		gap: 0.8rem;
 	}
 
 	.source-list {
@@ -985,27 +1045,49 @@ const whalesOffer = {
 		border-color: rgba(25, 85, 102, 0.5);
 	}
 
-	.whales-grid {
-		display: grid;
-		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-		gap: 1rem;
-		align-items: start;
-	}
-
-	.whales-copy {
-		display: grid;
-		gap: 1rem;
-	}
-
-	.whales-feature {
-		padding: 1.4rem;
-		border-radius: 1.35rem;
-	}
-
+	.tonga-panel,
 	.whales-card,
 	.cta-panel {
 		padding: clamp(1.4rem, 3vw, 2rem);
 		border-radius: 1.5rem;
+	}
+
+	.tonga-panel {
+		max-width: 62rem;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.tonga-image {
+		margin: 0;
+		border-radius: 1.1rem;
+		overflow: hidden;
+		border: 1px solid rgba(16, 34, 45, 0.08);
+	}
+
+	.tonga-image img {
+		display: block;
+		width: 100%;
+		max-height: 28rem;
+		object-fit: cover;
+	}
+
+	.tonga-link a {
+		color: var(--accent-deep);
+		text-decoration: none;
+		border-bottom: 1px solid rgba(25, 85, 102, 0.22);
+	}
+
+	.tonga-link a:hover {
+		border-color: rgba(25, 85, 102, 0.5);
+	}
+
+	.whales-card {
+		max-width: 42rem;
+	}
+
+	.whales-intro {
+		margin-bottom: 1rem;
 	}
 
 	.whales-form {
@@ -1057,30 +1139,10 @@ const whalesOffer = {
 
 	.whales-success {
 		display: grid;
-		gap: 1rem;
-		padding-top: 1.4rem;
-		margin-top: 1.4rem;
+		gap: 0.55rem;
+		padding-top: 1rem;
+		margin-top: 1rem;
 		border-top: 1px solid rgba(16, 34, 45, 0.12);
-	}
-
-	.success-code {
-		display: inline-grid;
-		gap: 0.2rem;
-		padding: 0.95rem 1rem;
-		border-radius: 1rem;
-		background: rgba(16, 34, 45, 0.05);
-	}
-
-	.success-code span {
-		font-size: 0.78rem;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: var(--muted);
-	}
-
-	.success-code strong {
-		font-size: clamp(1.3rem, 2vw, 1.7rem);
-		letter-spacing: 0.08em;
 	}
 
 	.contact-card {
@@ -1187,7 +1249,7 @@ const whalesOffer = {
 		.gallery-grid,
 		.about-section,
 		.research-story,
-		.whales-grid,
+		.research-note,
 		.cta-panel,
 		.site-footer {
 			grid-template-columns: 1fr;
@@ -1198,6 +1260,10 @@ const whalesOffer = {
 		.research-story.reverse .research-story-image,
 		.research-story.reverse .research-story-copy {
 			order: initial;
+		}
+
+		.research-story.reverse {
+			grid-template-columns: 1fr;
 		}
 
 		.gallery-card:nth-child(2) {
@@ -1219,6 +1285,10 @@ const whalesOffer = {
 		}
 
 		.site-header {
+			padding-inline: 0.8rem;
+		}
+
+		.header-inner {
 			flex-direction: column;
 			align-items: flex-start;
 		}
