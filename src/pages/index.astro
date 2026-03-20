@@ -45,8 +45,9 @@ const researchStories = [
 		image: '/images/nunu-1731.jpg',
 		alt: 'Diver in the water during fieldwork around Lord Howe Island.',
 		body: [
-			'Galapagos sharks are an important indicator species for marine park management. Their abundant population in the waters around Lord Howe Island signals a healthy marine ecosystem, and they can be encountered safely in-water without the use of bait or attractants, providing rewarding experiences for divers and snorkellers.',
-			'Continuing the acoustic receiver array is recommended to further monitor this population and provide new insights into the movement ecology of adult Galapagos sharks, which remains limited worldwide. Maintaining the array will also provide vital ongoing benefits for investigating connectivity of marine megafauna across the Tasman Sea region.',
+			'Galapagos sharks are an important indicator species for the health of the marine parks surrounding Lord Howe Island. Their abundant population signals a functioning ecosystem — and because they can be encountered safely in-water without the use of bait or attractants, they also provide meaningful social and economic value for visitors, residents, and local businesses through diving and snorkelling experiences.',
+			'However, negative interactions do occur. Fishers report that depredation — where sharks consume hooked fish before they can be retrieved — has increased over the past decade. This has been linked to possible changes in shark behaviour, with the animals associating boat engine noise with the availability of food from bait, hooked fish, and discarded fish waste. Finding ways to reduce these interactions while supporting positive ones is critical to promoting coexistence and maintaining the environmental, social, and economic values of the marine parks.',
+			'Continuing the deepwater acoustic receiver array is recommended to further monitor this population long-term and to provide new insights into the movement ecology of adult Galapagos sharks, which remains limited worldwide. Maintaining the array will also provide vital ongoing benefits for investigating connectivity of marine megafauna across the broader Tasman Sea region. The research team has also recommended further testing of shark deterrent devices and ongoing education activities with the Lord Howe Island community to raise awareness and foster interest in Galapagos sharks and the marine parks.',
 		],
 	},
 ];
@@ -267,7 +268,7 @@ const whalesOffer = {
 				</div>
 			</section>
 
-			<section class="tonga-section" id="tonga-whales">
+			<section class="whales-layout" id="tonga-whales">
 				<div class="tonga-panel">
 					<p class="eyebrow">July &ndash; October 2026</p>
 					<h2>Swim with humpback whales in Tonga</h2>
@@ -309,10 +310,8 @@ const whalesOffer = {
 						</a>.
 					</p>
 				</div>
-			</section>
 
-			<section class="whales-section" aria-label="Tonga whale swims interest form">
-				<div class="whales-card">
+				<div class="whales-card" aria-label="Tonga whale swims interest form">
 					<p class="whales-intro">
 						Register your interest and Anika will be in touch with details, availability,
 						and any offers as they&apos;re confirmed.
@@ -404,7 +403,7 @@ const whalesOffer = {
 									</svg>
 								</span>
 								<span>
-									<strong>Instagram</strong>
+									<strong>Personal Instagram</strong>
 									<small>@nunufis</small>
 								</span>
 							</a>
@@ -423,36 +422,11 @@ const whalesOffer = {
 									</svg>
 								</span>
 								<span>
-									<strong>Freedive Instagram</strong>
+									<strong>Business Instagram</strong>
 									<small>@lumarafreedive</small>
 								</span>
 							</a>
 						</div>
-					</div>
-					<div class="contact-actions">
-						<a class="button button-primary icon-button" href={contactLinks.email}>
-							<svg viewBox="0 0 24 24" aria-hidden="true">
-								<path
-									d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm2.22-.25L12 11.44l6.78-4.94H5.22Zm14.28 1.86-6.91 5.03a1 1 0 0 1-1.18 0L4.5 8.36v8.89c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25V8.36Z"
-									fill="currentColor"
-								/>
-							</svg>
-							<span>Email</span>
-						</a>
-						<a
-							class="button button-secondary contact-button icon-button"
-							href={contactLinks.instagramBrand}
-							target="_blank"
-							rel="noreferrer"
-						>
-							<svg viewBox="0 0 24 24" aria-hidden="true">
-								<path
-									d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
-									fill="currentColor"
-								/>
-							</svg>
-							<span>@lumarafreedive</span>
-						</a>
 					</div>
 				</div>
 			</section>
@@ -735,8 +709,7 @@ const whalesOffer = {
 
 	.hero-actions,
 	.contact-list,
-	.footer-links,
-	.contact-actions {
+	.footer-links {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.8rem;
@@ -807,12 +780,6 @@ const whalesOffer = {
 		border: 1px solid rgba(243, 239, 230, 0.18);
 	}
 
-	.contact-button {
-		color: var(--text);
-		background: rgba(16, 34, 45, 0.04);
-		border: 1px solid rgba(16, 34, 45, 0.12);
-	}
-
 	.hero-note {
 		justify-self: end;
 		max-width: 18rem;
@@ -829,8 +796,7 @@ const whalesOffer = {
 	.gallery-section,
 	.about-section,
 	.research-section,
-	.tonga-section,
-	.whales-section,
+	.whales-layout,
 	.cta-section,
 	.site-footer {
 		margin-top: clamp(2rem, 5vw, 4.5rem);
@@ -1045,6 +1011,13 @@ const whalesOffer = {
 		border-color: rgba(25, 85, 102, 0.5);
 	}
 
+	.whales-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.45fr) minmax(22rem, 0.85fr);
+		gap: 1rem;
+		align-items: start;
+	}
+
 	.tonga-panel,
 	.whales-card,
 	.cta-panel {
@@ -1083,7 +1056,9 @@ const whalesOffer = {
 	}
 
 	.whales-card {
-		max-width: 42rem;
+		max-width: none;
+		position: sticky;
+		top: 6rem;
 	}
 
 	.whales-intro {
@@ -1143,6 +1118,10 @@ const whalesOffer = {
 		padding-top: 1rem;
 		margin-top: 1rem;
 		border-top: 1px solid rgba(16, 34, 45, 0.12);
+	}
+
+	.whales-success[hidden] {
+		display: none !important;
 	}
 
 	.contact-card {
@@ -1250,6 +1229,7 @@ const whalesOffer = {
 		.about-section,
 		.research-story,
 		.research-note,
+		.whales-layout,
 		.cta-panel,
 		.site-footer {
 			grid-template-columns: 1fr;
