@@ -62,8 +62,10 @@ const researchNote = {
 	title: 'Meet the Galapagos sharks',
 	image: '/images/D877_C011_1019LC.0001041.JPG',
 	alt: 'A school of Galapagos sharks moving through blue water near Lord Howe Island.',
-	body: "Galapagos sharks — also known as whaler sharks — were first described from the Galápagos Islands. Around Lord Howe Island, most individuals encountered are immature, reaching around two metres in length at maturity between six and nine years of age. They feed on pelagic fish, reef fish, and squid. The waters surrounding Lord Howe Island and Elizabeth and Middleton Reefs serve as important nursery areas for the species. To support the continued research and monitoring of this population, visit the program's GoFundMe page.",
+	body: 'Galapagos sharks — also known as whaler sharks — were first described from the Galápagos Islands. Around Lord Howe Island, most individuals encountered are immature, reaching around two metres in length at maturity between six and nine years of age. They feed on pelagic fish, reef fish, and squid. The waters surrounding Lord Howe Island and Elizabeth and Middleton Reefs serve as important nursery areas for the species.',
 };
+
+const researchSupportLink = 'https://www.gofundme.com/f/lord-howe-island-shark-research-program';
 
 const contactLinks = {
 	email: 'mailto:anikacraney@gmail.com',
@@ -201,9 +203,18 @@ const whalesOffer = {
 						supporting fieldwork in the waters surrounding Lord Howe Island. The program is
 						led by Dr Jonathan Mitchell and Dr Victoria Camilieri-Asch at the University of
 						Western Australia, with funding from Parks Australia and in-kind support from
-						NSW DPIRD. The program relies on ongoing community support — you can contribute
-						via their GoFundMe campaign.
+						NSW DPI. The program relies on ongoing community support — you can contribute
+						via their
+						<a href={researchSupportLink} target="_blank" rel="noreferrer">GoFundMe campaign</a>.
 					</p>
+					<a
+						class="button button-primary research-donate-button"
+						href={researchSupportLink}
+						target="_blank"
+						rel="noreferrer"
+					>
+						Donate to the research program
+					</a>
 				</div>
 				<figure class="research-banner">
 					<img
@@ -230,7 +241,16 @@ const whalesOffer = {
 				<div class="research-note">
 					<div class="research-note-copy">
 						<h3>{researchNote.title}</h3>
-						<p>{researchNote.body}</p>
+						<p>
+							{researchNote.body}
+							{' '}
+							To support the continued research and monitoring of this population, visit the
+							program&apos;s
+							{' '}
+							<a href={researchSupportLink} target="_blank" rel="noreferrer">
+								GoFundMe page
+							</a>.
+						</p>
 						<p class="source-list">
 							Sources:
 							<a
@@ -473,8 +493,8 @@ const whalesOffer = {
 					</svg>
 				</a>
 			</div>
-		</footer>
-	</div>
+	</footer>
+</div>
 </Layout>
 
 <style>
@@ -824,6 +844,32 @@ const whalesOffer = {
 		border: 1px solid rgba(25, 85, 102, 0.18);
 		background: rgba(255, 255, 255, 0.48);
 		border-radius: 1rem;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.research-intro a,
+	.research-note-copy a {
+		color: var(--accent-deep);
+		text-decoration: none;
+		border-bottom: 1px solid rgba(25, 85, 102, 0.22);
+	}
+
+	.research-intro a:hover,
+	.research-note-copy a:hover {
+		border-color: rgba(25, 85, 102, 0.5);
+	}
+
+	.research-donate-button {
+		justify-self: start;
+		border: 0;
+		border-bottom: none !important;
+		text-decoration: none;
+		box-shadow: none;
+	}
+
+	.research-donate-button:hover {
+		border-bottom: none !important;
 	}
 
 	.research-banner {
