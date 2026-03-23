@@ -1,6 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const splitFirstSentence = (text) => {
+	const trimmedText = text.trim();
+	const match = trimmedText.match(/^.*?[.!?](?=\s|$)/);
+
+	if (!match) {
+		return {
+			intro: trimmedText,
+			rest: '',
+		};
+	}
+
+	return {
+		intro: match[0],
+		rest: trimmedText.slice(match[0].length).trim(),
+	};
+};
+
+const getCollapsibleCopy = (paragraphs = []) => {
+	const [firstParagraph = '', ...remainingParagraphs] = paragraphs;
+	const { intro, rest } = splitFirstSentence(firstParagraph);
+
+	return {
+		intro,
+		rest,
+		remainingParagraphs,
+		hasMore: Boolean(rest || remainingParagraphs.length),
+	};
+};
+
 const galleryImages = [
 	{
 		src: '/images/gallery-1.jpg',
@@ -64,6 +93,8 @@ const researchNote = {
 	alt: 'A school of Galapagos sharks moving through blue water near Lord Howe Island.',
 	body: 'Galapagos sharks — also known as whaler sharks — were first described from the Galápagos Islands. Around Lord Howe Island, most individuals encountered are immature, reaching around two metres in length at maturity between six and nine years of age. They feed on pelagic fish, reef fish, and squid. The waters surrounding Lord Howe Island and Elizabeth and Middleton Reefs serve as important nursery areas for the species.',
 };
+
+const researchNoteCopy = splitFirstSentence(researchNote.body);
 
 const researchSupportLink = 'https://www.gofundme.com/f/lord-howe-island-shark-research-program';
 
@@ -232,51 +263,95 @@ const whalesOffer = {
 					/>
 				</figure>
 				<div class="research-stories">
-					{researchStories.map((story, index) => (
-						<article class={`research-story ${index % 2 === 1 ? 'reverse' : ''}`}>
-							<div class="research-story-image">
-								<img src={story.image} alt={story.alt} loading="lazy" />
-							</div>
-							<div class="research-story-copy">
-								<h3>{story.title}</h3>
-								{story.body.map((paragraph) => (
-									<p>{paragraph}</p>
-								))}
-							</div>
-						</article>
-					))}
+					{researchStories.map((story, index) => {
+						const storyCopy = getCollapsibleCopy(story.body);
+
+						return (
+							<article class={`research-story ${index % 2 === 1 ? 'reverse' : ''}`}>
+								<div class="research-story-image">
+									<img src={story.image} alt={story.alt} loading="lazy" />
+								</div>
+								<div class="research-story-copy research-collapsible" data-mobile-collapsible>
+									<h3>{story.title}</h3>
+									<p class="research-collapsible-lead">
+										<span>{storyCopy.intro}</span>
+										{storyCopy.hasMore && (
+											<>
+												{' '}
+													<button
+														class="research-collapse-button"
+														type="button"
+														data-collapsible-button
+														aria-expanded="false"
+													>
+														Read more...
+													</button>
+											</>
+										)}
+									</p>
+									{storyCopy.hasMore && (
+										<div class="research-collapsible-content" data-collapsible-content>
+											{storyCopy.rest && <p>{storyCopy.rest}</p>}
+											{storyCopy.remainingParagraphs.map((paragraph) => (
+												<p>{paragraph}</p>
+											))}
+										</div>
+									)}
+								</div>
+							</article>
+						);
+					})}
 				</div>
 				<div class="research-note">
-					<div class="research-note-copy">
+					<div class="research-note-copy research-collapsible" data-mobile-collapsible>
 						<h3>{researchNote.title}</h3>
-						<p>
-							{researchNote.body}
-							{' '}
-							To support the continued research and monitoring of this population, visit the
-							program&apos;s
-							{' '}
-							<a href={researchSupportLink} target="_blank" rel="noreferrer">
-								GoFundMe page
-							</a>.
+						<p class="research-collapsible-lead">
+							<span>{researchNoteCopy.intro}</span>
+							{researchNoteCopy.rest && (
+								<>
+									{' '}
+									<button
+										class="research-collapse-button"
+										type="button"
+										data-collapsible-button
+										aria-expanded="false"
+									>
+										Read more...
+									</button>
+								</>
+							)}
 						</p>
-						<p class="source-list">
-							Sources:
-							<a
-								href="https://australianmarineparks.gov.au/science/scientific-publications/lord-howe-island-shark-research-program/"
-								target="_blank"
-								rel="noreferrer"
-							>
-								Parks Australia program page
-							</a>
-							and
-							<a
-								href="https://australianmarineparks.gov.au/static/57682249d600e2657bb145a0e36f1c67/galapagos-sharks.pdf"
-								target="_blank"
-								rel="noreferrer"
-							>
-								Galapagos sharks PDF
-							</a>
-						</p>
+						{researchNoteCopy.rest && (
+							<div class="research-collapsible-content" data-collapsible-content>
+								<p>{researchNoteCopy.rest}</p>
+								<p>
+									To support the continued research and monitoring of this population, visit
+									the program&apos;s
+									{' '}
+									<a href={researchSupportLink} target="_blank" rel="noreferrer">
+										GoFundMe page
+									</a>.
+								</p>
+								<p class="source-list">
+									Sources:
+									<a
+										href="https://australianmarineparks.gov.au/science/scientific-publications/lord-howe-island-shark-research-program/"
+										target="_blank"
+										rel="noreferrer"
+									>
+										Parks Australia program page
+									</a>
+									and
+									<a
+										href="https://australianmarineparks.gov.au/static/57682249d600e2657bb145a0e36f1c67/galapagos-sharks.pdf"
+										target="_blank"
+										rel="noreferrer"
+									>
+										Galapagos sharks PDF
+									</a>
+								</p>
+							</div>
+						)}
 					</div>
 					<div class="research-note-image">
 						<img src={researchNote.image} alt={researchNote.alt} loading="lazy" />
@@ -504,6 +579,74 @@ const whalesOffer = {
 	</footer>
 </div>
 </Layout>
+
+<script is:inline>
+	const mobileResearchQuery = window.matchMedia('(max-width: 720px)');
+	const researchCollapsibles = Array.from(document.querySelectorAll('[data-mobile-collapsible]'));
+
+	const syncCollapsibleState = (container, expanded) => {
+		const button = container.querySelector('[data-collapsible-button]');
+		const content = container.querySelector('[data-collapsible-content]');
+
+		if (!button || !content) {
+			return;
+		}
+
+		container.dataset.expanded = expanded ? 'true' : 'false';
+		button.textContent = expanded ? 'Read less' : 'Read more...';
+		button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+		content.style.maxHeight = expanded ? `${content.scrollHeight}px` : '0px';
+		content.style.opacity = expanded ? '1' : '0';
+	};
+
+	const applyResearchMode = () => {
+		researchCollapsibles.forEach((container) => {
+			const button = container.querySelector('[data-collapsible-button]');
+			const content = container.querySelector('[data-collapsible-content]');
+
+			if (!button || !content) {
+				return;
+			}
+
+			container.dataset.ready = 'true';
+
+			if (mobileResearchQuery.matches) {
+				button.hidden = false;
+				syncCollapsibleState(container, container.dataset.mobileExpanded === 'true');
+				return;
+			}
+
+			button.hidden = true;
+			content.style.maxHeight = 'none';
+			content.style.opacity = '1';
+			container.dataset.expanded = 'true';
+			button.setAttribute('aria-expanded', 'true');
+		});
+	};
+
+	researchCollapsibles.forEach((container) => {
+		const button = container.querySelector('[data-collapsible-button]');
+
+		if (!button) {
+			return;
+		}
+
+		container.dataset.mobileExpanded = 'false';
+		button.addEventListener('click', () => {
+			container.dataset.mobileExpanded =
+				container.dataset.mobileExpanded === 'true' ? 'false' : 'true';
+			syncCollapsibleState(container, container.dataset.mobileExpanded === 'true');
+		});
+	});
+
+	applyResearchMode();
+	mobileResearchQuery.addEventListener('change', applyResearchMode);
+	window.addEventListener('resize', () => {
+		if (mobileResearchQuery.matches) {
+			applyResearchMode();
+		}
+	});
+</script>
 
 <style>
 	.page-shell {
@@ -978,6 +1121,32 @@ const whalesOffer = {
 		gap: 0.8rem;
 	}
 
+	.research-collapsible-lead {
+		margin: 0;
+	}
+
+	.research-collapse-button {
+		display: none;
+		padding: 0;
+		border: 0;
+		background: none;
+		color: var(--accent-deep);
+		font: inherit;
+		font-weight: 700;
+		line-height: inherit;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.research-collapse-button:hover {
+		color: color-mix(in srgb, var(--accent-deep) 86%, var(--text));
+	}
+
+	.research-collapsible-content {
+		display: grid;
+		gap: 0.8rem;
+	}
+
 	.source-list {
 		margin-top: 0.8rem;
 	}
@@ -1253,6 +1422,19 @@ const whalesOffer = {
 
 		.contact-card {
 			min-width: 100%;
+		}
+
+		.research-collapsible[data-ready='true'] .research-collapse-button {
+			display: inline;
+		}
+
+		.research-collapsible[data-ready='true'] .research-collapsible-content {
+			overflow: hidden;
+			max-height: 0;
+			opacity: 0;
+			transition:
+				max-height 280ms ease,
+				opacity 220ms ease;
 		}
 	}
 </style>
