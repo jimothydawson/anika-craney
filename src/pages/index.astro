@@ -107,34 +107,42 @@ const whalesOffer = {
 						stillness, confidence, and a deeper connection with the sea.
 					</p>
 					<div class="hero-actions">
-						<a class="button button-primary icon-button" href={contactLinks.email}>
-							<svg viewBox="0 0 24 24" aria-hidden="true">
-								<path
-									d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm2.22-.25L12 11.44l6.78-4.94H5.22Zm14.28 1.86-6.91 5.03a1 1 0 0 1-1.18 0L4.5 8.36v8.89c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25V8.36Z"
-									fill="currentColor"
-								/>
-							</svg>
-							<span>Email</span>
-						</a>
-						<a
-							class="button button-secondary icon-button"
-							href={contactLinks.instagramPersonal}
-							target="_blank"
-							rel="noreferrer"
-						>
-							<svg viewBox="0 0 24 24" aria-hidden="true">
-								<path
-									d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
-									fill="currentColor"
-								/>
-							</svg>
-							<span>@nunufis</span>
-						</a>
-						<a class="button button-glass" href="#tonga-whales">Whales in Tonga</a>
+						<div class="hero-actions-row">
+							<a class="button button-primary icon-button" href={contactLinks.email}>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path
+										d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm2.22-.25L12 11.44l6.78-4.94H5.22Zm14.28 1.86-6.91 5.03a1 1 0 0 1-1.18 0L4.5 8.36v8.89c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25V8.36Z"
+										fill="currentColor"
+									/>
+								</svg>
+								<span>Email</span>
+							</a>
+							<a
+								class="button button-secondary icon-button"
+								href={contactLinks.instagramPersonal}
+								target="_blank"
+								rel="noreferrer"
+							>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path
+										d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3h-9Zm9.75 1.13a.87.87 0 1 1 0 1.74.87.87 0 0 1 0-1.74ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
+										fill="currentColor"
+									/>
+								</svg>
+								<span>@nunufis</span>
+							</a>
+						</div>
+						<div class="hero-actions-row hero-actions-row-secondary">
+							<a class="button button-glass hero-research-button" href="#research">
+								Galapagos Shark Research Program
+							</a>
+						</div>
+						<div class="hero-actions-row hero-actions-row-tertiary">
+							<a class="button button-glass hero-whales-button" href="#tonga-whales">
+								Swim with Whales in Tonga
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="hero-note">
-					<p>Freediving, research, and whale swims with Anika Craney.</p>
 				</div>
 			</section>
 
@@ -581,13 +589,9 @@ const whalesOffer = {
 		background: linear-gradient(180deg, transparent, rgba(4, 12, 18, 0.58));
 	}
 
-	.hero-copy,
-	.hero-note {
+	.hero-copy {
 		position: relative;
 		z-index: 1;
-	}
-
-	.hero-copy {
 		max-width: 42rem;
 		color: #f3efe6;
 	}
@@ -667,6 +671,19 @@ const whalesOffer = {
 
 	.hero-actions {
 		margin-top: 1.7rem;
+		display: grid;
+		gap: 0.65rem;
+	}
+
+	.hero-actions-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem;
+	}
+
+	.hero-actions .button {
+		padding: 0.88rem 1.2rem;
+		font-size: 0.92rem;
 	}
 
 	.contact-list {
@@ -728,18 +745,6 @@ const whalesOffer = {
 		background: rgba(255, 255, 255, 0.08);
 		color: #f3efe6;
 		border: 1px solid rgba(243, 239, 230, 0.18);
-	}
-
-	.hero-note {
-		justify-self: end;
-		max-width: 18rem;
-		margin-top: 2rem;
-		padding: 1rem 1.1rem;
-		border: 1px solid rgba(243, 239, 230, 0.2);
-		border-radius: 1rem;
-		background: rgba(4, 12, 18, 0.3);
-		color: rgba(243, 239, 230, 0.86);
-		backdrop-filter: blur(10px);
 	}
 
 	.pillars,
@@ -1208,10 +1213,6 @@ const whalesOffer = {
 
 		.gallery-card:nth-child(2) {
 			transform: none;
-		}
-
-		.hero-note {
-			justify-self: start;
 		}
 
 		.about-image-wrap {
